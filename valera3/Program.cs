@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact",
         policy => policy
-            .WithOrigins("http://localhost:3000", "http://localhost:3001")
+            .WithOrigins("http://localhost:3000", "http://localhost:3001", "http://localhost:5173", "https://localhost:5173", "https://localhost:7110", "http://localhost:7110", "http://localhost:5247", "https://localhost:5247")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
@@ -30,10 +30,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors("AllowReact");
+// app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.UseCors("AllowReact");
 
 // Initialize database
 using (var scope = app.Services.CreateScope())

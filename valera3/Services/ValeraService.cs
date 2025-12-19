@@ -64,17 +64,20 @@ namespace valera3.Services
             if (valera == null)
                 return false;
 
-            bool result = actionName.ToLower() switch
-            {
-                "work" => valera.GoToWork(),
-                "nature" => valera.ContemplateNature(),
-                "wine" => valera.DrinkWineAndWatchSeries(),
-                "bar" => valera.GoToBar(),
-                "marginals" => valera.DrinkWithMarginals(),
-                "sing" => valera.SingInMetro(),
-                "sleep" => valera.Sleep(),
-                _ => false,
-            };
+            bool result = false;
+            if (valera.IsAlive){
+                result = actionName.ToLower() switch
+                {
+                    "work" => valera.GoToWork(),
+                    "nature" => valera.ContemplateNature(),
+                    "wine" => valera.DrinkWineAndWatchSeries(),
+                    "bar" => valera.GoToBar(),
+                    "marginals" => valera.DrinkWithMarginals(),
+                    "sing" => valera.SingInMetro(),
+                    "sleep" => valera.Sleep(),
+                    _ => false,
+                };
+            }
 
             if (result)
             {

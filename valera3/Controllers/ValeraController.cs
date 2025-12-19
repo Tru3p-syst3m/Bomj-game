@@ -5,7 +5,7 @@ using valera3.Services;
 namespace valera3.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     public class ValeraController : ControllerBase
     {
         private readonly ValeraService _valeraService;
@@ -61,7 +61,7 @@ namespace valera3.Controllers
         {
             var result = await _valeraService.ExecuteActionAsync(id, actionName);
             if (!result)
-                return BadRequest("Action failed or Valera not found");
+                return Ok("Not enough stats");
             return Ok("Action executed successfully");
         }
 

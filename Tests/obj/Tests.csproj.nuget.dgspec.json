@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proger`s place\\Bomj-game\\Tests\\Tests.csproj": {}
+    "D:\\Git repositories\\Bomj-game\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Proger`s place\\Bomj-game\\Tests\\Tests.csproj": {
+    "D:\\Git repositories\\Bomj-game\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proger`s place\\Bomj-game\\Tests\\Tests.csproj",
+        "projectUniqueName": "D:\\Git repositories\\Bomj-game\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Proger`s place\\Bomj-game\\Tests\\Tests.csproj",
-        "packagesPath": "C:\\Users\\pvorm\\.nuget\\packages\\",
-        "outputPath": "C:\\Proger`s place\\Bomj-game\\Tests\\obj\\",
+        "projectPath": "D:\\Git repositories\\Bomj-game\\Tests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\b3aut1ful_c0rpse\\.nuget\\packages\\",
+        "outputPath": "D:\\Git repositories\\Bomj-game\\Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pvorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\b3aut1ful_c0rpse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proger`s place\\Bomj-game\\valera3\\valera3.csproj": {
-                "projectPath": "C:\\Proger`s place\\Bomj-game\\valera3\\valera3.csproj"
+              "D:\\Git repositories\\Bomj-game\\valera3\\valera3.csproj": {
+                "projectPath": "D:\\Git repositories\\Bomj-game\\valera3\\valera3.csproj"
               }
             }
           }
@@ -38,7 +42,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -81,21 +91,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proger`s place\\Bomj-game\\valera3\\valera3.csproj": {
+    "D:\\Git repositories\\Bomj-game\\valera3\\valera3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proger`s place\\Bomj-game\\valera3\\valera3.csproj",
+        "projectUniqueName": "D:\\Git repositories\\Bomj-game\\valera3\\valera3.csproj",
         "projectName": "valera3",
-        "projectPath": "C:\\Proger`s place\\Bomj-game\\valera3\\valera3.csproj",
-        "packagesPath": "C:\\Users\\pvorm\\.nuget\\packages\\",
-        "outputPath": "C:\\Proger`s place\\Bomj-game\\valera3\\obj\\",
+        "projectPath": "D:\\Git repositories\\Bomj-game\\valera3\\valera3.csproj",
+        "packagesPath": "C:\\Users\\b3aut1ful_c0rpse\\.nuget\\packages\\",
+        "outputPath": "D:\\Git repositories\\Bomj-game\\valera3\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pvorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\b3aut1ful_c0rpse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -115,7 +129,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -155,7 +175,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
