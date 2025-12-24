@@ -50,6 +50,8 @@ namespace valera3.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
+            //ADMIN'а можно допилить здесь, типа если id = 1 то выдаем роль админа
+
             // Генерируем JWT токен
             var token = _jwtService.GenerateToken(user);
             return Ok(new { Token = token, User = model.Username, Message = "Пользователь успешно зарегистрирован" });
