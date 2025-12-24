@@ -3,14 +3,30 @@ import { useParams, Link } from 'react-router-dom';
 import { getValeraById, executeAction, resetValera } from '../../services/api';
 import './ValeraStats.css';
 
-const ValeraStats = () => {
+const ValeraStats = ({ onLogout }) => {
     const { id } = useParams();
     const [valera, setValera] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [userRole, setUserRole] = useState('User'); // По умолчанию User
 
     useEffect(() => {
         fetchValera();
+        // Получаем роль пользователя из токена
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                const decodedToken = JSON.parse(jsonPayload);
+                setUserRole(decodedToken.role || 'User');
+            } catch (err) {
+                console.error('Ошибка при декодировании токена:', err);
+            }
+        }
     }, [id]);
 
     const fetchValera = async () => {
@@ -63,7 +79,10 @@ const ValeraStats = () => {
 
     return (
         <div className="valera-stats-container">
-            <h1>Статистика Валеры #{valera.id}</h1>
+            <div className="header">
+                <h1>Статистика Валеры #{valera.id}</h1>
+                <button onClick={onLogout} className="logout-btn">Выйти</button>
+            </div>
 
             <div className="valera-details">
                 <div className="stats-grid">

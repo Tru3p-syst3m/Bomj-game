@@ -1,6 +1,5 @@
 namespace valera3.Models
 {
-
     public class Valera
     {
         public int Id { get; set; }
@@ -9,6 +8,10 @@ namespace valera3.Models
         private int _cheerfulness;
         private int _fatigue;
         private int _money;
+
+        // РЎРІСЏР·СЊ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
+        public int UserId { get; set; }
+        public User? User { get; set; }
 
         public int Health
         {
@@ -50,7 +53,7 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Пойти на работу (Можно только если алкоголь < 50 а усталость < 10)
+        /// РџРѕР№С‚Рё РЅР° СЂР°Р±РѕС‚Сѓ (РњРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РµСЃР»Рё Р°Р»РєРѕРіРѕР»СЊ < 50 Р° СѓСЃС‚Р°Р»РѕСЃС‚СЊ < 10)
         /// </summary>
         public bool GoToWork()
         {
@@ -65,7 +68,7 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Созерцать природу
+        /// РЎРѕР·РµСЂС†Р°С‚СЊ РїСЂРёСЂРѕРґСѓ
         /// </summary>
         public bool ContemplateNature()
         {
@@ -76,7 +79,7 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Пить вино и смотреть сериал
+        /// РџРёС‚СЊ РІРёРЅРѕ Рё СЃРјРѕС‚СЂРµС‚СЊ СЃРµСЂРёР°Р»
         /// </summary>
         public bool DrinkWineAndWatchSeries()
         {
@@ -92,7 +95,7 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Сходить в бар
+        /// РЎС…РѕРґРёС‚СЊ РІ Р±Р°СЂ
         /// </summary>
         public bool GoToBar()
         {
@@ -108,7 +111,7 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Выпить с маргинальными личностями
+        /// Р’С‹РїРёС‚СЊ СЃ РјР°СЂРіРёРЅР°Р»СЊРЅС‹РјРё Р»РёС‡РЅРѕСЃС‚СЏРјРё
         /// </summary>
         public bool DrinkWithMarginals()
         {
@@ -124,7 +127,7 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Петь в метро
+        /// РџРµС‚СЊ РІ РјРµС‚СЂРѕ
         /// </summary>
         public bool SingInMetro()
         {
@@ -143,7 +146,7 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Спать
+        /// РЎРїР°С‚СЊ
         /// </summary>
         public bool Sleep()
         {
@@ -163,17 +166,17 @@ namespace valera3.Models
         }
 
         /// <summary>
-        /// Проверка, жив ли Валерa
+        /// РџСЂРѕРІРµСЂРєР°, Р¶РёРІ Р»Рё Р’Р°Р»РµСЂa
         /// </summary>
         public bool IsAlive => Health > 0 && Fatigue < 100;
 
         /// <summary>
-        /// Получить текущее состояние Валеры
+        /// РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ Р’Р°Р»РµСЂС‹
         /// </summary>
         public override string ToString()
         {
-            return $"Здоровье: {Health}, Мана: {Mana}, Жизнерадостность: {Cheerfulness}, " +
-                   $"Усталость: {Fatigue}, Деньги: ${Money}, Жив: {IsAlive}";
+            return $"Р—РґРѕСЂРѕРІСЊРµ: {Health}, РњР°РЅР°: {Mana}, Р–РёР·РЅРµСЂР°РґРѕСЃС‚РЅРѕСЃС‚СЊ: {Cheerfulness}, " +
+                   $"РЈСЃС‚Р°Р»РѕСЃС‚СЊ: {Fatigue}, Р”РµРЅСЊРіРё: ${Money}, Р–РёРІ: {IsAlive}";
         }
     }
 }

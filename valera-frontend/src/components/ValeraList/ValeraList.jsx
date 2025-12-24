@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllValeras, createValera } from '../../services/api';
+import { createValera, getAllValeras } from '../../services/api';
 import ValeraForm from '../ValeraForm/ValeraForm';
 import '../ValeraForm/ValeraForm.css';
 import './ValeraList.css';
 
-const ValeraList = () => {
+const ValeraList = ({ onLogout }) => {
     const [valeras, setValeras] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -18,19 +18,38 @@ const ValeraList = () => {
         fatigue: 0,
         money: 100
     });
+    const [userRole, setUserRole] = useState('User'); // По умолчанию User
 
     // Загрузка списка Валер при монтировании компонента
     useEffect(() => {
         fetchValeras();
+        // Получаем роль пользователя из токена
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                const decodedToken = JSON.parse(jsonPayload);
+                setUserRole(decodedToken.role || 'User');
+            } catch (err) {
+                console.error('Ошибка при декодировании токена:', err);
+            }
+        }
     }, []);
 
     const fetchValeras = async () => {
         try {
             setIsLoading(true);
+            console.log('Запрос на получение Валер...');
             const data = await getAllValeras();
+            console.log('Получены данные:', data);
             setValeras(data);
             setError(null);
         } catch (err) {
+            console.error('Ошибка при загрузке данных:', err);
             setError('Ошибка при загрузке данных Валер');
             console.error(err);
         } finally {
@@ -55,6 +74,38 @@ const ValeraList = () => {
     const handleCreateValera = async (e) => {
         e.preventDefault();
         try {
+            const token = localStorage.getItem('token');
+            let userId = null;
+
+            if (token) {
+                try {
+                    const base64Url = token.split('.')[1];
+                    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                    const decodedToken = JSON.parse(jsonPayload);
+                    userId = decodedToken.nameid || decodedToken.sub;
+                } catch (err) {
+                    console.error('Ошибка при декодировании токена:', err);
+                }
+            }
+
+            // Отправляйте правильные данные
+            const dataToSend = {
+                health: newValera.health,
+                mana: newValera.mana,
+                cheerfulness: newValera.cheerfulness,
+                fatigue: newValera.fatigue,
+                money: newValera.money,
+                userId: userId, // Добавьте userId вместо строки User
+                user: {
+                    id: userId,
+                    username: localStorage.getItem('user')
+                }
+            };
+
+            console.log('Отправляемые данные:', dataToSend);
             const createdValera = await createValera(newValera);
             setValeras([...valeras, createdValera]);
             setNewValera({
@@ -89,7 +140,10 @@ const ValeraList = () => {
 
     return (
         <div className="valera-list-container">
-            <h1>Список Валер</h1>
+            <div className="header">
+                <h1>Список Валер</h1>
+                <button onClick={onLogout} className="logout-btn">Выйти</button>
+            </div>
 
             <div className="controls">
                 <input
